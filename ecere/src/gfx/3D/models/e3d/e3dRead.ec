@@ -488,6 +488,10 @@ static void readBlocks(E3DContext ctx, File f, DisplaySystem displaySystem, E3DB
                         uint32 n;
                         f.Seek(vStart + nOffset, start), f.Read(&n, sizeof(uint32), 1);
                         vecfUnpack10i(n, normal, null);
+
+                        // Munakata E3D buildings are off:
+                        normal->x *= -1;
+                        normal->z *= -1;
                      }
                      if(texCoord)
                         f.Seek(vStart + t1Offset, start), f.Read(texCoord, sizeof(Pointf), 1);
